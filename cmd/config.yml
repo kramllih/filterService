@@ -1,0 +1,21 @@
+################################################################
+# database allows you to set what database the application  
+# will use.                                                  
+################################################################
+database:
+  boltdb:
+    name: "database.db"
+
+
+################################################################
+# languageService sets the url for the language server
+################################################################
+languageService: "http://localhost:8081"
+
+################################################################
+# api allows you to set the hostname and port for the rest   
+# interface.                                                 
+################################################################
+api:
+  #host:
+  port: 8080
