@@ -12,6 +12,8 @@ There is a small yml config file stored on the root of the application, this con
 
 ## To Run
 
+To run this service, the Language Service must be running as well.
+
 ## Using Docker
 build the image using `docker build -t filter .`
 run a container using `docker run -it --rm -p 8080:8080 filter`
