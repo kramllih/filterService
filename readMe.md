@@ -124,7 +124,12 @@ Using the id provided, this will reject the image. Messages with a rejected imag
 
 ## design decisons and changes
 
-I've used bbolt because its a little embedding key,value store, which is fast and not memory based. Ive also added a Mongo to show that its possible to have other databases attached.
-ideally the banned words would be cached here rather than fetching from the server all the time. The `updated` field on the banned words list would be used to acheive this
-Orignally i felt that using a Message Queue like SQS, rabbitMQ or RedPanda would be best for this. Then you could have a number of consumers here that just processed the messages in the queue. I went with a REST api for simplistic sake, however its very easy to added a message queue listener and keep the REST api as well.
+I've used bbolt because its a little embedding key,value store, which is fast and not memory based. Ive also added a MongoDB driver to show that its possible to have other databases attached.
+
+ideally the banned words would be cached here rather than fetching from the server all the time. The `updated` field on the banned words list would be used to acheive this.
+
+Orignally I felt that using a Message Queue like SQS, rabbitMQ or RedPanda would be best for this. Then you could have a number of consumers here that just processed the messages in the queue. I went with a REST api for simplistic sake, however its very easy to added a message queue listener and keep the REST api as well.
+
 I was also torn on offloading the validating to another goroutine and ending the endpoint sooner. this would again allow multiple messages to be handled at the same time. Using this idea it would be best to offload the approvals to another service.
+
+My logger of choice is Logrus, its a bit old now but it still works perfectly. I would recommend moving to Zap or Zero however.
